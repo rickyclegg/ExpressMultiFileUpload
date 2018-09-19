@@ -1,0 +1,10 @@
+{
+  "spec_files": [
+    "e2e/**/*.spec.js"
+  ],
+  "helpers": [
+    "jasmine-parameterize.js"
+  ],
+  "stopSpecOnExpectationFailure": false,
+  "random": false
+}

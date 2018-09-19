@@ -1,0 +1,11 @@
+{
+  "watch": [
+    "routes/**/*",
+    "server.js",
+    "constants.js",
+    "public/**/*.*",
+    "views/**/*.*"
+  ],
+  "ignore": [],
+  "ext" : "js json html"
+}

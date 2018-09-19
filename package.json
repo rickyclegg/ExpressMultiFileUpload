@@ -1,0 +1,36 @@
+{
+  "name": "express-multi-file-upload",
+  "version": "0.0.1",
+  "private": true,
+  "engines": {
+    "node": "6.5.x"
+  },
+  "scripts": {
+    "start": "node server",
+    "debug": "NODE_ENV=development DEBUG=ExpressMultiFileUpload:* npm start",
+    "watch": "NODE_ENV=development DEBUG=ExpressMultiFileUpload:* nodemon server.js",
+    "test": "npm run lint && npm run e2e",
+    "lint": "eslint --fix --color -c .eslintrc *.js ./**/*.js ./e2e/**/*.js",
+    "e2e": "jasmine JASMINE_CONFIG_PATH=jasmine.json"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.3",
+    "dotenv": "^4.0.0",
+    "express": "^4.16.3",
+    "formidable": "^1.2.1",
+    "fs-extra": "^6.0.1",
+    "hbs": "~4.0.1",
+    "morgan": "^1.9.0",
+    "serve-favicon": "~2.4.2"
+  },
+  "devDependencies": {
+    "eslint": "^4.19.1",
+    "eslint-plugin-jasmine": "^2.9.3",
+    "jasmine": "^2.99.0",
+    "jasmine-core": "^2.99.1",
+    "nodemon": "^1.17.4",
+    "supertest": "^3.0.0"
+  }
+}
