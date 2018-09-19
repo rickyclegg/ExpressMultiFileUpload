@@ -15,3 +15,5 @@ nbproject
 .idea
 .node_history
 temp/
+.sass-cache/
+public/styles/

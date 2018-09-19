@@ -8,13 +8,16 @@
   },
   "env": {
     "node": true,
+    "browser": true,
     "jasmine": true,
     "es6": true
   },
   "globals": {
     "inject": true,
     "cases": true,
-    "require": true
+    "require": true,
+    "rjc": true,
+    "setFixtures": true
   },
   "plugins": [
     "jasmine"
