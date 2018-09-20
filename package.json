@@ -9,8 +9,8 @@
     "start": "node server",
     "debug": "NODE_ENV=development DEBUG=ExpressMultiFileUpload:* npm start",
     "watch": "NODE_ENV=development DEBUG=ExpressMultiFileUpload:* nodemon server.js",
-    "test": "npm run lint && fe-unit && npm run e2e",
-    "fe-unit": "karma start",
+    "test": "npm run lint && npm run client-unit && npm run e2e",
+    "client-unit": "karma start",
     "lint": "eslint --fix --color -c .eslintrc *.js ./**/*.js ./e2e/**/*.js",
     "e2e": "jasmine JASMINE_CONFIG_PATH=jasmine.json"
   },
