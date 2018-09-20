@@ -7,9 +7,11 @@ const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const index = require('./routes/index');
+const apiUploadRoute = require('./routes/api/upload');
 const app = express();
 const http = require('http');
 const constants = require('./constants');
+const formidable = require('express-formidable');
 let port;
 let server;
 
@@ -71,8 +73,13 @@ app.use(logger('dev'));
 app.use(bodyParser.json({limit: constants.server.BODY_PARSE_LIMIT}));
 app.use(bodyParser.urlencoded({'extended': false}));
 app.use(cookieParser());
+app.use(formidable({
+  multiples: true,
+  uploadDir: path.join(__dirname, 'uploads')
+}));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index);
+app.use(constants.server.apiEndpoint.UPLOAD, apiUploadRoute);
 
 app.use((req, res, next) => {
   const err = new Error('Not Found');

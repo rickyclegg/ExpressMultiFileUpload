@@ -12,4 +12,10 @@ describe('Server', () => {
       expect(server).toBeDefined();
     });
   });
+
+  describe('Uploading files', () => {
+    it('should start up with no errors', () => {
+      expect(server).toBeDefined();
+    });
+  });
 });

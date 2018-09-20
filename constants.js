@@ -9,6 +9,13 @@ module.exports = {
     BODY_PARSE_LIMIT: '2mb',
     INTERNAL_ERROR_CODE: 500,
     NOT_FOUND_ERROR_CODE: 404,
-    PORT_BOUNDARY: 0
+    PORT_BOUNDARY: 0,
+    apiEndpoint: {
+      UPLOAD: '/api/upload'
+    },
+    responseCode: {
+      CREATED: 201,
+      NOT_FOUND: 404
+    }
   }
 };

@@ -18,3 +18,4 @@ temp/
 .sass-cache/
 public/styles/
 public/scripts/
+uploads/
