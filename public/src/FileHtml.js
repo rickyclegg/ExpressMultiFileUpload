@@ -8,6 +8,16 @@
     return this._currentId;
   }
 
+  function updateInputChangeHandlers() {
+    var self = this;
+
+    this._$form.find('input[id*=Btn]').change(function () {
+      document.getElementById(this.id.replace('Btn', 'File')).value = this.files[0].name;
+
+      self.appendNewUpload();
+    });
+  }
+
   rjc.FileHtml = function (fromEl) {
     this._currentId = -1;
     this._$form = jQuery(fromEl);
@@ -20,6 +30,8 @@
 
   rjc.FileHtml.prototype.appendNewUpload = function () {
     this._$form.append(this.createNewFileInput());
+
+    updateInputChangeHandlers.call(this);
   };
 
   rjc.FileHtml.prototype.createNewFileInput = function () {

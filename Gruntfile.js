@@ -3,6 +3,8 @@
 
 module.exports = grunt => {
   grunt.loadNpmTasks('grunt-contrib-sass');
+  grunt.loadNpmTasks('grunt-contrib-concat');
+  grunt.loadNpmTasks('grunt-contrib-uglify-es');
 
   const config = {};
 
@@ -18,8 +20,32 @@ module.exports = grunt => {
           'public/styles/main.css': 'public/scss/main.scss'
         }
       }
+    },
+
+    concat: {
+      options: {
+        separator: ';'
+      },
+      dist: {
+        src: [
+          'public/src/FileHtml.js',
+          'public/src/index.js'
+        ],
+        dest: 'public/scripts/index.js'
+      }
+    },
+
+    uglify: {
+      dist: {
+        options: {
+          sourceMap: true
+        },
+        files: {
+          'public/scripts/index.min.js': ['public/scripts/index.js']
+        }
+      }
     }
   });
 
-  grunt.registerTask('default', ['sass']);
+  grunt.registerTask('default', ['sass', 'concat', 'uglify']);
 };
