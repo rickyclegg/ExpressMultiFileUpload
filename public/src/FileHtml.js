@@ -8,8 +8,18 @@
     return this._currentId;
   }
 
-  rjc.FileHtml = function () {
+  rjc.FileHtml = function (fromEl) {
     this._currentId = -1;
+    this._$form = jQuery(fromEl);
+    this.appendNewUpload();
+  };
+
+  rjc.FileHtml.prototype.get$Form = function () {
+    return this._$form;
+  };
+
+  rjc.FileHtml.prototype.appendNewUpload = function () {
+    this._$form.append(this.createNewFileInput());
   };
 
   rjc.FileHtml.prototype.createNewFileInput = function () {

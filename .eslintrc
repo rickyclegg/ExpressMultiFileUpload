@@ -17,7 +17,9 @@
     "cases": true,
     "require": true,
     "rjc": true,
-    "setFixtures": true
+    "setFixtures": true,
+    "$": true,
+    "jQuery": true
   },
   "plugins": [
     "jasmine"
