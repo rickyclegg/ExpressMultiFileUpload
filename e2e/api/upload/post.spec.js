@@ -23,7 +23,8 @@ describe('Route: upload', () => {
           expect(fs.readdirSync('./uploads/').length).toEqual(2);
 
           done();
-        });
+        })
+        .catch(done.fail);
     });
   });
 });
