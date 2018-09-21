@@ -13,6 +13,9 @@ module.exports = {
     apiEndpoint: {
       UPLOAD: '/api/upload'
     },
+    paths: {
+      UPLOADS: 'uploads'
+    },
     responseCode: {
       CREATED: 201,
       NOT_FOUND: 404

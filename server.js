@@ -12,6 +12,8 @@ const app = express();
 const http = require('http');
 const constants = require('./constants');
 const formidable = require('express-formidable');
+const fs = require('fs-extra');
+const uploadsPath = path.join(__dirname, constants.server.paths.UPLOADS);
 let port;
 let server;
 
@@ -22,6 +24,10 @@ function onListening() {
     : `port ${addr.port}`;
 
   debug(`Listening on ${bind}`);
+
+  if (!fs.existsSync(uploadsPath)) {
+    fs.mkdirSync(uploadsPath);
+  }
 
   app.isListening = true;
   app.listeningRes();
@@ -73,10 +79,7 @@ app.use(logger('dev'));
 app.use(bodyParser.json({limit: constants.server.BODY_PARSE_LIMIT}));
 app.use(bodyParser.urlencoded({'extended': false}));
 app.use(cookieParser());
-app.use(formidable({
-  multiples: true,
-  uploadDir: path.join(__dirname, 'uploads')
-}));
+app.use(formidable({multiples: true, uploadDir: uploadsPath}));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index);
 app.use(constants.server.apiEndpoint.UPLOAD, apiUploadRoute);
