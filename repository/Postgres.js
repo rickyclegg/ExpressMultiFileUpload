@@ -13,14 +13,20 @@ class Postgres {
       .then(() => client.end());
   }
 
-  run(query) {
+  run(query, values) {
     const client = new Client();
+    let results;
 
     debug(`Run ${query}`);
 
     return client.connect()
-      .then(() => client.query(query))
-      .then(() => client.end());
+      .then(() => client.query(query, values))
+      .then((data) => {
+        results = data;
+
+        return client.end();
+      })
+      .then(() => results);
   }
 }
 

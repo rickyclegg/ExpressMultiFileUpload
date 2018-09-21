@@ -13,6 +13,7 @@
     "debug": "NODE_ENV=development DEBUG=ExpressMultiFileUpload:* npm start",
     "prewatch": "npm run build",
     "watch": "NODE_ENV=development DEBUG=ExpressMultiFileUpload:* nodemon server.js",
+    "pretest": "npm run build",
     "test": "npm run lint && npm run client-unit && npm run e2e",
     "client-unit": "karma start",
     "lint": "eslint --fix --color -c .eslintrc *.js ./**/*.js ./e2e/**/*.js",

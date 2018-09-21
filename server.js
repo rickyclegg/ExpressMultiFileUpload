@@ -80,7 +80,11 @@ app.use(bodyParser.json({limit: constants.server.BODY_PARSE_LIMIT}));
 app.use(bodyParser.urlencoded({'extended': false}));
 app.use(cookieParser());
 app.use(express.static('public'));
-app.use(formidable({multiples: true, uploadDir: uploadsPath}));
+app.use(formidable({
+  keepExtensions: true,
+  multiples: true,
+  uploadDir: uploadsPath
+}));
 app.use('/', index);
 app.use(constants.server.apiEndpoint.UPLOAD, apiUploadRoute);
 
