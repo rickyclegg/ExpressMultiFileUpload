@@ -16,6 +16,7 @@ I may have been a bit confused with the client side brief as it seemed what was 
 * I used a repository-ish pattern to hide Postgres from the rest of the application. And then service files to hold all the business logic. This is still only tested via integration, and not unit.
 * I have never stored a file in a DB before, I normally store them in Azure Blob storage and put the url in the DB. So apologies if anything in my `upload.service.js` looks odd to you. I still think the code is very neat.
 * I used grunt to build my sass and client side js.
+* Hands up, I only ran this in Chrome, but I only used basic MDL and ES5 so should be all good.
 
 ### Running
 * You need Postgres up and running with a DB called 'multifile'.
