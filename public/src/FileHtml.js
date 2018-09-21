@@ -11,7 +11,7 @@
   function updateInputChangeHandlers() {
     var self = this;
 
-    this._$form.find('input[id*=Btn]').change(function () {
+    this._$form.find('input[name*=file]').change(function () {
       document.getElementById(this.id.replace('Btn', 'File')).value = this.files[0].name;
 
       self.appendNewUpload();
@@ -20,7 +20,7 @@
 
   rjc.FileHtml = function (fromEl) {
     this._currentId = -1;
-    this._$form = jQuery(fromEl);
+    this._$form = $(fromEl);
     this.appendNewUpload();
   };
 
@@ -38,9 +38,9 @@
     var id = getIncrementId.call(this);
 
     return `<div class="mdl-textfield mdl-js-textfield mdl-textfield--file">
-              <input class="mdl-textfield__input" placeholder="File" type="text" id="upload${id}File" readonly/>
+              <input class="mdl-textfield__input" placeholder="File" type="text" name="upload${id}File" id="upload${id}File" readonly/>
               <div class="mdl-button mdl-button--primary mdl-button--icon mdl-button--file">
-                <i class="material-icons">attach_file</i><input type="file" id="upload${id}Btn">
+                <i class="material-icons">attach_file</i><input type="file" name="file${id}" id="upload${id}Btn">
               </div>
             </div>`;
   };

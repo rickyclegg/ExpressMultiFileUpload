@@ -29,6 +29,7 @@ module.exports = grunt => {
       dist: {
         src: [
           'public/src/FileHtml.js',
+          'public/src/Form.js',
           'public/src/index.js'
         ],
         dest: 'public/scripts/index.js'
