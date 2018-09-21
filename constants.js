@@ -1,5 +1,10 @@
 module.exports = {
-  db: {},
+  db: {
+    sql: {
+      GET_BY_NAME: 'SELECT filename FROM files WHERE filename = $1',
+      INSERT_FILE: 'INSERT INTO files (filename, file) VALUES($1, $2)'
+    }
+  },
   node: {
     ERROR_CODE: 1,
     ERROR_CODE_IN_USE: 'is already in use',

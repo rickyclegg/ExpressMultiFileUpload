@@ -1,4 +1,5 @@
 const Db = require('../repository/Postgres');
+const constants = require('../constants');
 
 class DBService {
   constructor() {
@@ -11,14 +12,14 @@ class DBService {
 
   addFile(filename, file) {
     return this.db.run(
-      'INSERT INTO files (filename, file) VALUES($1, $2)',
+      constants.db.sql.INSERT_FILE,
       [filename, file]
     );
   }
 
   getByName(filename) {
     return this.db.run(
-      'SELECT filename FROM files WHERE filename = $1',
+      constants.db.sql.GET_BY_NAME,
       [filename]
     );
   }
