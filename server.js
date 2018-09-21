@@ -79,8 +79,8 @@ app.use(logger('dev'));
 app.use(bodyParser.json({limit: constants.server.BODY_PARSE_LIMIT}));
 app.use(bodyParser.urlencoded({'extended': false}));
 app.use(cookieParser());
+app.use(express.static('public'));
 app.use(formidable({multiples: true, uploadDir: uploadsPath}));
-app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index);
 app.use(constants.server.apiEndpoint.UPLOAD, apiUploadRoute);
 
@@ -102,8 +102,6 @@ app.use((err, req, res) => {
 
 port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
-
-debug('Views added to DB');
 
 server = http.createServer(app);
 server.listen(port);
