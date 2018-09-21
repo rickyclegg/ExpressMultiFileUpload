@@ -2,7 +2,7 @@ describe('Form', () => {
   let form;
 
   function createMockFileInput(id, file) {
-    var inputEl = document.createElement('div');
+    const inputEl = document.createElement('div');
 
     inputEl.setAttribute('type', 'file');
     inputEl.setAttribute('name', `file${id}`);
@@ -13,7 +13,7 @@ describe('Form', () => {
   }
 
   beforeEach(() => {
-    var formEl = document.createElement('form');
+    const formEl = document.createElement('form');
 
     formEl.id = 'multiUploadForm';
 
@@ -28,9 +28,14 @@ describe('Form', () => {
   it('should dispatch an event onSubmit containing the 1 uploaded file', (done) => {
     form.get$Form().append(createMockFileInput(0, {name: '0.jpg'}));
 
-    form.onSubmit = function (files) {
-      expect(files[0].name).toEqual('0.jpg');
-      expect(files.length).toEqual(1);
+    form.onSubmit = (formData) => {
+      const keys = [];
+
+      for (let [key] of formData.entries()) {
+        keys.push(key);
+      }
+
+      expect(keys.length).toEqual(1);
 
       done();
     };
@@ -42,10 +47,16 @@ describe('Form', () => {
     form.get$Form().append(createMockFileInput(0, {name: '0.jpg'}));
     form.get$Form().append(createMockFileInput(1, {name: '1.jpg'}));
 
-    form.onSubmit = function (files) {
-      expect(files[0].name).toEqual('0.jpg');
-      expect(files[1].name).toEqual('1.jpg');
-      expect(files.length).toEqual(2);
+    form.onSubmit = (formData) => {
+      const keys = [];
+
+      for (let [key] of formData.entries()) {
+        keys.push(key);
+      }
+
+      expect(keys.length).toEqual(2);
+
+      done();
 
       done();
     };

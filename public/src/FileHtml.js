@@ -19,9 +19,8 @@
   }
 
   rjc.FileHtml = function (fromEl) {
-    this._currentId = -1;
     this._$form = $(fromEl);
-    this.appendNewUpload();
+    this.resetForm();
   };
 
   rjc.FileHtml.prototype.get$Form = function () {
@@ -30,6 +29,10 @@
 
   rjc.FileHtml.prototype.appendNewUpload = function () {
     this._$form.append(this.createNewFileInput());
+
+    this.get$Form()
+      .find('input[type=submit]')
+      .removeAttr('disabled');
 
     updateInputChangeHandlers.call(this);
   };
@@ -43,5 +46,19 @@
                 <i class="material-icons">attach_file</i><input type="file" name="file${id}" id="upload${id}Btn">
               </div>
             </div>`;
+  };
+
+  rjc.FileHtml.prototype.resetForm = function () {
+    this._currentId = -1;
+    this.get$Form()
+      .find('input[type=submit]')
+      .siblings()
+      .remove();
+
+    this.appendNewUpload();
+
+    this.get$Form()
+      .find('input[type=submit]')
+      .attr('disabled', 'true');
   };
 }());

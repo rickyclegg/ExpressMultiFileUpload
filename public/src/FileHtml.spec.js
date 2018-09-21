@@ -42,4 +42,18 @@ describe('FileHtml', () => {
     expect(fileHtml.get$Form().find('#upload1File')).toHaveLength(1);
     expect(fileHtml.get$Form().find('#upload1Btn')).toHaveLength(1);
   });
+
+  // This test is not working. jQuery is behaving oddly.
+  // I thought I would leave it in for you to see
+  xit('should reset form to its starting state', () => {
+    const html = fileHtml.get$Form().html();
+
+    fileHtml.appendNewUpload();
+
+    expect(html).not.toEqual(fileHtml.get$Form().html());
+
+    fileHtml.resetForm();
+
+    expect(html).toEqual(fileHtml.get$Form().html());
+  });
 });

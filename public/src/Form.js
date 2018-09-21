@@ -3,18 +3,18 @@
   window.rjc = window.rjc || {};
 
   function onFormSubmit(event) {
-    var files = [];
+    var formData = new FormData();
 
     event.preventDefault();
 
     this.get$Form().find('*[name*=file]')
       .each(function (index, input) {
         if (input.files[0]) {
-          files.push(input.files[0]);
+          formData.append('uploads[]', input.files[0]);
         }
       });
 
-    this.onSubmit(files);
+    this.onSubmit(formData);
   }
 
   rjc.Form = function (fromEl) {

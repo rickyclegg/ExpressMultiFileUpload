@@ -4,7 +4,15 @@
     fileHtml = new rjc.FileHtml(formEl),
     form = new rjc.Form(formEl);
 
-  form.onSubmit = function (files) {
-    console.log('Files to upload', files);
+  function resetForm(data) {
+    toastr.success(data.join(', ') + ' were uploaded.', 'Upload Success');
+
+    fileHtml.resetForm();
+  }
+
+  form.onSubmit = function (formData) {
+    var api = new rjc.Api();
+
+    api.postUpload(formData, resetForm);
   };
 }());
